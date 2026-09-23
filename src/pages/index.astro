@@ -9,9 +9,160 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Something I Noticed</title>
 	</head>
+
 	<body>
-		<h1>Something I Noticed</h1>
+		<header>
+			<h1>Something I <span>Noticed</span></h1>
+			<p>Things I notice, and where they take me.</p>
+		</header>
+
+		<main>
+			<section>
+				<h2>Latest</h2>
+
+				<article>
+					<p>001</p>
+					<h3>First essay coming soon</h3>
+					<p>
+						An observation from everyday life, followed wherever it
+						leads.
+					</p>
+				</article>
+			</section>
+		</main>
+
+		<footer>
+			<p>About</p>
+		</footer>
 	</body>
+
+	<style>
+		:global(*) {
+			box-sizing: border-box;
+		}
+
+		:global(body) {
+			margin: 0;
+			min-height: 100vh;
+			background:
+				radial-gradient(
+					circle at 70% 15%,
+					rgba(126, 180, 147, 0.12),
+					transparent 30rem
+				),
+				#0b2118;
+			color: #edf3ec;
+			font-family: Arial, Helvetica, sans-serif;
+			line-height: 1.6;
+		}
+
+		header,
+		main,
+		footer {
+			width: min(100% - 3rem, 1100px);
+			margin-inline: auto;
+		}
+
+		header {
+			min-height: 70vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-block: 5rem;
+		}
+
+		h1 {
+			max-width: 850px;
+			margin: 0;
+			font-size: clamp(3rem, 8vw, 7rem);
+			font-weight: 600;
+			letter-spacing: -0.05em;
+			line-height: 0.95;
+		}
+
+		h1 span {
+			display: block;
+		}
+
+		header p {
+			max-width: 520px;
+			margin-top: 2rem;
+			color: #a9bcae;
+			font-size: clamp(1rem, 2vw, 1.25rem);
+		}
+
+		h2 {
+			margin: 0;
+			color: #8fb59a;
+			font-size: 0.8rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.18em;
+		}
+
+		article {
+			margin-top: 2rem;
+			padding-block: 3rem;
+			border-top: 1px solid rgba(237, 243, 236, 0.14);
+		}
+
+		article > p:first-child {
+			color: #8fb59a;
+			font-size: 0.85rem;
+			letter-spacing: 0.08em;
+		}
+
+		article h3 {
+			margin-block: 0.5rem;
+			font-size: clamp(1.8rem, 4vw, 3rem);
+			font-weight: 500;
+			letter-spacing: -0.03em;
+		}
+
+		article p {
+			max-width: 620px;
+			margin-block: 0.75rem;
+			color: #b9c8bd;
+		}
+
+		footer {
+			margin-top: 6rem;
+			padding-block: 3rem;
+			border-top: 1px solid rgba(237, 243, 236, 0.14);
+			color: #8fa197;
+		}
+
+		@media (max-width: 600px) {
+			header,
+			main,
+			footer {
+				width: min(100% - 2rem, 1100px);
+			}
+
+			header {
+				min-height: 60vh;
+				padding-block: 3rem;
+			}
+
+			h1 {
+				font-size: clamp(3rem, 15vw, 4.5rem);
+				line-height: 0.9;
+			}
+
+			header p {
+				margin-top: 1.5rem;
+				font-size: 1rem;
+			}
+
+			article {
+				padding-block: 2rem;
+			}
+
+			article h3 {
+				font-size: 2rem;
+			}
+		}
+	</style>
 </html>
