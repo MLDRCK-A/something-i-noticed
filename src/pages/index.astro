@@ -1,5 +1,12 @@
 ---
+import { getCollection } from "astro:content";
 
+const pieces = (await getCollection("pieces"))
+	.filter((piece) => !piece.data.draft)
+	.sort(
+		(a, b) =>
+			b.data.published.getTime() - a.data.published.getTime(),
+	);
 ---
 
 <html lang="en">
@@ -9,27 +16,49 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+
 		<title>Something I Noticed</title>
+		<meta
+			name="description"
+			content="Things I notice, and where they take me."
+		/>
 	</head>
 
 	<body>
-		<header>
+		<header class="hero">
 			<h1>Something I <span>Noticed</span></h1>
 			<p>Things I notice, and where they take me.</p>
 		</header>
 
 		<main>
-			<section>
+			<section class="latest">
 				<h2>Latest</h2>
 
-				<article>
-					<p>001</p>
-					<h3>First essay coming soon</h3>
-					<p>
-						An observation from everyday life, followed wherever it
-						leads.
-					</p>
-				</article>
+				<div class="piece-list">
+					{
+						pieces.length > 0 ? (
+							pieces.map((piece) => (
+								<article class="piece">
+									<a href={`/pieces/${piece.id}/`}>
+										<p class="piece-number">
+											{String(piece.data.number).padStart(3, "0")}
+										</p>
+
+										<h3>{piece.data.title}</h3>
+
+										<p class="piece-description">
+											{piece.data.description}
+										</p>
+									</a>
+								</article>
+							))
+						) : (
+							<p class="empty-state">
+								The first piece is being written.
+							</p>
+						)
+					}
+				</div>
 			</section>
 		</main>
 
@@ -41,6 +70,10 @@
 	<style>
 		:global(*) {
 			box-sizing: border-box;
+		}
+
+		:global(html) {
+			background: #0b2118;
 		}
 
 		:global(body) {
@@ -58,14 +91,14 @@
 			line-height: 1.6;
 		}
 
-		header,
+		.hero,
 		main,
 		footer {
 			width: min(100% - 3rem, 1100px);
 			margin-inline: auto;
 		}
 
-		header {
+		.hero {
 			min-height: 70vh;
 			display: flex;
 			flex-direction: column;
@@ -86,7 +119,7 @@
 			display: block;
 		}
 
-		header p {
+		.hero > p {
 			max-width: 520px;
 			margin-top: 2rem;
 			color: #a9bcae;
@@ -102,28 +135,56 @@
 			letter-spacing: 0.18em;
 		}
 
-		article {
+		.piece-list {
 			margin-top: 2rem;
-			padding-block: 3rem;
+		}
+
+		.piece {
 			border-top: 1px solid rgba(237, 243, 236, 0.14);
 		}
 
-		article > p:first-child {
+		.piece a {
+			display: block;
+			padding-block: 3rem;
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.piece-number {
+			margin: 0;
 			color: #8fb59a;
 			font-size: 0.85rem;
 			letter-spacing: 0.08em;
 		}
 
-		article h3 {
+		.piece h3 {
+			max-width: 850px;
 			margin-block: 0.5rem;
 			font-size: clamp(1.8rem, 4vw, 3rem);
 			font-weight: 500;
 			letter-spacing: -0.03em;
+			line-height: 1.1;
 		}
 
-		article p {
+		.piece-description {
 			max-width: 620px;
-			margin-block: 0.75rem;
+			margin-block: 0.75rem 0;
+			color: #b9c8bd;
+		}
+
+		.piece a:hover h3,
+		.piece a:focus-visible h3 {
+			color: #b7d8bf;
+		}
+
+		.piece a:focus-visible {
+			outline: 2px solid #b7d8bf;
+			outline-offset: 0.5rem;
+		}
+
+		.empty-state {
+			padding-block: 3rem;
+			border-top: 1px solid rgba(237, 243, 236, 0.14);
 			color: #b9c8bd;
 		}
 
@@ -135,13 +196,13 @@
 		}
 
 		@media (max-width: 600px) {
-			header,
+			.hero,
 			main,
 			footer {
 				width: min(100% - 2rem, 1100px);
 			}
 
-			header {
+			.hero {
 				min-height: 60vh;
 				padding-block: 3rem;
 			}
@@ -151,16 +212,16 @@
 				line-height: 0.9;
 			}
 
-			header p {
+			.hero > p {
 				margin-top: 1.5rem;
 				font-size: 1rem;
 			}
 
-			article {
+			.piece a {
 				padding-block: 2rem;
 			}
 
-			article h3 {
+			.piece h3 {
 				font-size: 2rem;
 			}
 		}
