@@ -8,6 +8,7 @@ const formattedDate = published.toLocaleDateString("en-US", {
 	month: "long",
 	day: "numeric",
 });
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -19,6 +20,18 @@ const formattedDate = published.toLocaleDateString("en-US", {
 
 		<title>{title} | Something I Noticed</title>
 		<meta name="description" content={description} />
+
+		<link rel="canonical" href={canonicalURL} />
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Something I Noticed" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
 	</head>
 
 	<body>

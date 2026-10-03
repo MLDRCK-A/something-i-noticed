@@ -1,0 +1,180 @@
+---
+
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+
+        <title>Support | Something I Noticed</title>
+        <meta name="description" content="Support Something I Noticed." />
+    </head>
+
+    <body>
+        <nav>
+            <a href="/">Something I Noticed</a>
+        </nav>
+
+        <main>
+            <header>
+                <p class="eyebrow">Support</p>
+                <h1>Keep this going.</h1>
+            </header>
+
+            <section class="prose">
+                <p>
+                    Something I Noticed is free to read. There are no paywalls,
+                    advertisements, or locked articles.
+                </p>
+
+                <p>
+                    If something here was worth your time and you'd like to
+                    support the writing, you can leave a one-time tip.
+                </p>
+
+                <a class="support-button" href="#"> Support the writing </a>
+
+                <p>
+                    Support is completely optional. Reading, sharing, or simply
+                    thinking about something I wrote is already participation.
+                </p>
+
+                <p>
+                    Support helps cover the small costs of keeping this place
+                    running and gives me more room to keep writing.
+                </p>
+
+                <p>
+                    And, realistically, some of it may become a matcha latte. 🍵
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <a href="/">Back home</a>
+        </footer>
+    </body>
+</html>
+
+<style>
+    :global(*) {
+        box-sizing: border-box;
+    }
+
+    :global(html) {
+        background: #0b2118;
+    }
+
+    :global(body) {
+        margin: 0;
+        min-height: 100vh;
+        background:
+            radial-gradient(
+                circle at 70% 15%,
+                rgba(126, 180, 147, 0.12),
+                transparent 30rem
+            ),
+            #0b2118;
+        color: #edf3ec;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.7;
+    }
+
+    nav,
+    main,
+    footer {
+        width: min(100% - 3rem, 760px);
+        margin-inline: auto;
+    }
+
+    nav {
+        padding-block: 2rem;
+    }
+
+    a {
+        color: #a9cbb2;
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+        color: #edf3ec;
+    }
+
+    header {
+        padding-block: clamp(4rem, 12vw, 8rem);
+    }
+
+    .eyebrow {
+        margin: 0 0 1rem;
+        color: #8fb59a;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: clamp(3rem, 9vw, 6rem);
+        font-weight: 600;
+        letter-spacing: -0.05em;
+        line-height: 0.95;
+    }
+
+    .prose {
+        max-width: 680px;
+        font-size: clamp(1.05rem, 2vw, 1.2rem);
+    }
+
+    .prose p {
+        margin-block: 0 1.5em;
+        color: #c4d0c7;
+    }
+
+    .support-button {
+        display: inline-block;
+        margin-block: 0.5rem 2rem;
+        padding: 0.85rem 1.2rem;
+        border: 1px solid rgba(237, 243, 236, 0.3);
+        border-radius: 0.4rem;
+        background: #edf3ec;
+        color: #0b2118;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .support-button:hover,
+    .support-button:focus-visible {
+        background: #dce8df;
+        color: #0b2118;
+    }
+
+    h2 {
+        margin-block: 3.5rem 1.25rem;
+        color: #edf3ec;
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        font-weight: 500;
+        letter-spacing: -0.03em;
+    }
+
+    footer {
+        margin-top: 6rem;
+        padding-block: 3rem;
+        border-top: 1px solid rgba(237, 243, 236, 0.14);
+    }
+
+    @media (max-width: 600px) {
+        nav,
+        main,
+        footer {
+            width: min(100% - 2rem, 760px);
+        }
+
+        header {
+            padding-block: 4rem;
+        }
+    }
+</style>

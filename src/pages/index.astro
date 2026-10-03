@@ -3,10 +3,7 @@ import { getCollection } from "astro:content";
 
 const pieces = (await getCollection("pieces"))
 	.filter((piece) => !piece.data.draft)
-	.sort(
-		(a, b) =>
-			b.data.published.getTime() - a.data.published.getTime(),
-	);
+	.sort((a, b) => b.data.published.getTime() - a.data.published.getTime());
 ---
 
 <html lang="en">
@@ -41,7 +38,10 @@ const pieces = (await getCollection("pieces"))
 								<article class="piece">
 									<a href={`/pieces/${piece.id}/`}>
 										<p class="piece-number">
-											{String(piece.data.number).padStart(3, "0")}
+											{String(piece.data.number).padStart(
+												3,
+												"0",
+											)}
 										</p>
 
 										<h3>{piece.data.title}</h3>
@@ -63,7 +63,8 @@ const pieces = (await getCollection("pieces"))
 		</main>
 
 		<footer>
-			<p>About</p>
+			<a href="/about/">About</a>
+			<a href="/support/">Support</a>
 		</footer>
 	</body>
 
@@ -189,10 +190,22 @@ const pieces = (await getCollection("pieces"))
 		}
 
 		footer {
+			display: flex;
+			gap: 1.5rem;
 			margin-top: 6rem;
 			padding-block: 3rem;
 			border-top: 1px solid rgba(237, 243, 236, 0.14);
 			color: #8fa197;
+		}
+
+		footer a {
+			color: #8fa197;
+			text-decoration: none;
+		}
+
+		footer a:hover,
+		footer a:focus-visible {
+			color: #edf3ec;
 		}
 
 		@media (max-width: 600px) {
