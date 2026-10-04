@@ -8,13 +8,19 @@ const pieces = defineCollection({
 		base: "./src/data/pieces",
 	}),
 
-	schema: z.object({
-		number: z.number(),
-		title: z.string(),
-		description: z.string(),
-		published: z.coerce.date(),
-		draft: z.boolean().default(false),
-	}),
+	schema: z
+		.object({
+			number: z.number(),
+			title: z.string(),
+			description: z.string(),
+			published: z.coerce.date().optional(),
+			draft: z.boolean().default(false),
+			socialImage: z.string().optional(),
+		})
+		.refine((piece) => piece.draft || piece.published, {
+			message: "Published pieces must have a publication date.",
+			path: ["published"],
+		}),
 });
 
 export const collections = { pieces };
