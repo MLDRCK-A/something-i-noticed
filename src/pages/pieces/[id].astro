@@ -5,7 +5,11 @@ import PieceLayout from "../../layouts/PieceLayout.astro";
 export async function getStaticPaths() {
 	const pieces = await getCollection("pieces");
 
-	return pieces.map((piece) => ({
+	const visiblePieces = import.meta.env.PROD
+		? pieces.filter((piece) => !piece.data.draft)
+		: pieces;
+
+	return visiblePieces.map((piece) => ({
 		params: { id: piece.id },
 		props: { piece },
 	}));
