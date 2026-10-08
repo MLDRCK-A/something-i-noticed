@@ -1,5 +1,8 @@
 ---
-const { title, description, number, published, socialImage } = Astro.props;
+import ArticleEpilogue from "../components/ArticleEpilogue.astro";
+
+const { title, description, number, published, socialImage, epilogue } =
+	Astro.props;
 
 const pieceNumber = String(number).padStart(3, "0");
 
@@ -93,12 +96,13 @@ const socialImageURL = new URL(
 			</div>
 		</main>
 
-		<section class="epilogue">
-			<div class="epilogue-inner">
-				<p>Thanks for reading.</p>
-			</div>
-		</section>
-
+		<ArticleEpilogue
+			message={epilogue?.message}
+			supportText={epilogue?.supportText}
+			image={epilogue?.image}
+			imageAlt={epilogue?.imageAlt}
+			showSupport={epilogue?.showSupport}
+		/>
 		<footer>
 			<a href="/">Something I Noticed</a>
 		</footer>
@@ -124,7 +128,6 @@ const socialImageURL = new URL(
 		nav,
 		.masthead-art,
 		article,
-		.epilogue-inner,
 		footer {
 			width: min(100% - 3rem, 1100px);
 			margin-inline: auto;
@@ -168,7 +171,7 @@ const socialImageURL = new URL(
 			width: 100%;
 			background: #f2efe6;
 		}
-		.article-transition {i m
+		.article-transition {
 			position: relative;
 			z-index: 2;
 			width: 100%;
@@ -282,23 +285,6 @@ const socialImageURL = new URL(
 			font-style: italic;
 		}
 
-		.epilogue {
-			min-height: 40vh;
-			background: #0b2118;
-			color: #edf3ec;
-		}
-
-		.epilogue-inner {
-			padding-block: 5rem;
-			text-align: center;
-		}
-
-		.epilogue-inner p {
-			margin: 0;
-			color: #a9cbb2;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-
 		footer {
 			padding-block: 3rem;
 			border-top: 1px solid rgba(237, 243, 236, 0.14);
@@ -308,7 +294,6 @@ const socialImageURL = new URL(
 			nav,
 			.masthead-art,
 			article,
-			.epilogue-inner,
 			footer {
 				width: min(100% - 2rem, 1100px);
 			}
