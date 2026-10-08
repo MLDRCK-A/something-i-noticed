@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <html lang="en">
@@ -27,8 +28,9 @@
 
 			<section class="prose">
 				<p>
-					Something I Noticed is where I write about things I encounter
-					in ordinary life and follow them wherever they lead.
+					Something I Noticed is where I write about things I
+					encounter in ordinary life and follow them wherever they
+					lead.
 				</p>
 
 				<p>
@@ -38,10 +40,17 @@
 					when I begin writing about it.
 				</p>
 
+				<figure class="about-art">
+					<img
+						src="/images/site/about-caveman.png"
+						alt="A caveman sitting at a computer, looking at a photograph of a person and cat on the screen."
+					/>
+				</figure>
+
 				<p>
-					The point isn't to hand you a philosophy or tell you what
-					to think. I'm documenting what I noticed, what I thought
-					about it, what I tried, and what changed in my understanding.
+					The point isn't to hand you a philosophy or tell you what to
+					think. I'm documenting what I noticed, what I thought about
+					it, what I tried, and what changed in my understanding.
 				</p>
 
 				<h2>How I make this</h2>
@@ -49,9 +58,9 @@
 				<p>
 					I use contemporary tools as part of my creative process,
 					including language models for things such as editing,
-					research assistance, coding, and working through ideas.
-					When generative tools materially contribute to a piece or
-					its visuals, I aim to be transparent about that process.
+					research assistance, coding, and working through ideas. When
+					generative tools materially contribute to a piece or its
+					visuals, I aim to be transparent about that process.
 				</p>
 
 				<p>
@@ -79,13 +88,7 @@
 	:global(body) {
 		margin: 0;
 		min-height: 100vh;
-		background:
-			radial-gradient(
-				circle at 70% 15%,
-				rgba(126, 180, 147, 0.12),
-				transparent 30rem
-			),
-			#0b2118;
+		background: #0b2118;
 		color: #edf3ec;
 		font-family: Arial, Helvetica, sans-serif;
 		line-height: 1.7;
@@ -143,6 +146,17 @@
 		color: #c4d0c7;
 	}
 
+	.about-art {
+		margin: 4rem auto;
+		max-width: 560px;
+	}
+
+	.about-art img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
 	h2 {
 		margin-block: 3.5rem 1.25rem;
 		color: #edf3ec;
@@ -166,6 +180,10 @@
 
 		header {
 			padding-block: 4rem;
+		}
+
+		.about-art {
+			margin-block: 3rem;
 		}
 	}
 </style>
