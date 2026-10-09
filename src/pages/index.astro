@@ -19,6 +19,12 @@ const pieces = (await getCollection("pieces"))
 			name="description"
 			content="Things I notice, and where they take me."
 		/>
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="Something I Noticed"
+			href="/rss.xml"
+		/>
 	</head>
 
 	<body>
@@ -72,6 +78,7 @@ const pieces = (await getCollection("pieces"))
 		<footer>
 			<a href="/about/">About</a>
 			<a href="/support/">Support</a>
+			<a href="/rss.xml">RSS</a>
 		</footer>
 	</body>
 
