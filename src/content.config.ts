@@ -16,6 +16,7 @@ const pieces = defineCollection({
 			published: z.coerce.date().optional(),
 			draft: z.boolean().default(false),
 			socialImage: z.string().optional(),
+			socialImageAlt: z.string().optional(),
 
 			epilogue: z
 				.object({

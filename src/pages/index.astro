@@ -1,6 +1,16 @@
 ---
 import { getCollection } from "astro:content";
 
+const siteTitle = "Something I Noticed";
+const siteDescription = "Things I notice, and where they take me.";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const socialImageURL = new URL("/images/site/home-banner.png", Astro.site);
+
+const socialImageAlt =
+	"A caveman and cat sitting beside a campfire, overlooking a distant city.";
+
 const pieces = (await getCollection("pieces"))
 	.filter((piece) => !piece.data.draft)
 	.sort((a, b) => b.data.published.getTime() - a.data.published.getTime());
@@ -14,11 +24,24 @@ const pieces = (await getCollection("pieces"))
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 
-		<title>Something I Noticed</title>
-		<meta
-			name="description"
-			content="Things I notice, and where they take me."
-		/>
+		<title>{siteTitle}</title>
+		<meta name="description" content={siteDescription} />
+
+		<link rel="canonical" href={canonicalURL} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={siteTitle} />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={siteDescription} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={socialImageURL} />
+		<meta property="og:image:alt" content={socialImageAlt} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={siteTitle} />
+		<meta name="twitter:description" content={siteDescription} />
+		<meta name="twitter:image" content={socialImageURL} />
+		<meta name="twitter:image:alt" content={socialImageAlt} />
 		<link
 			rel="alternate"
 			type="application/rss+xml"
@@ -31,7 +54,7 @@ const pieces = (await getCollection("pieces"))
 		<header class="hero">
 			<div class="hero-copy">
 				<h1>Something I <span>Noticed</span></h1>
-				<p>Things I notice, and where they take me.</p>
+				<p>{siteDescription}</p>
 			</div>
 
 			<img

@@ -4,6 +4,7 @@ title: "The Cats Started Watching Me Back"
 description: "What happened when feeding a small colony of community cats turned into an experiment in trust, communication, and how we model one another."
 draft: true
 socialImage: "/images/pieces/001-cat-colony/cat-friends-social.png"
+socialImageAlt: "A group of community cats gathered together in a cozy outdoor setting."
 
 epilogue:
   message: "The cats gave me something worth writing about."

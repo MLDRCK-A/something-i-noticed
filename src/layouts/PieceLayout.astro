@@ -1,8 +1,15 @@
 ---
 import ArticleEpilogue from "../components/ArticleEpilogue.astro";
 
-const { title, description, number, published, socialImage, epilogue } =
-	Astro.props;
+const {
+	title,
+	description,
+	number,
+	published,
+	socialImage,
+	socialImageAlt,
+	epilogue,
+} = Astro.props;
 
 const pieceNumber = String(number).padStart(3, "0");
 
@@ -33,20 +40,46 @@ const socialImageURL = new URL(
 		<meta name="description" content={description} />
 
 		<link rel="canonical" href={canonicalURL} />
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="Something I Noticed"
+			href="/rss.xml"
+		/>
 
 		<meta property="og:type" content="article" />
+
+		{
+			published && (
+				<meta
+					property="article:published_time"
+					content={published.toISOString()}
+				/>
+			)
+		}
+
 		<meta property="og:site_name" content="Something I Noticed" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalURL} />
 
 		<meta property="og:image" content={socialImageURL} />
+		{
+			socialImageAlt && (
+				<meta property="og:image:alt" content={socialImageAlt} />
+			)
+		}
 
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 
 		<meta name="twitter:image" content={socialImageURL} />
+		{
+			socialImageAlt && (
+				<meta name="twitter:image:alt" content={socialImageAlt} />
+			)
+		}
 	</head>
 
 	<body>
