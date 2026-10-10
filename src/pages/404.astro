@@ -1,0 +1,92 @@
+---
+const pageTitle = "404 | Something I Noticed";
+const pageDescription = "Nothing was found at this address.";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="robots" content="noindex" />
+    </head>
+
+    <body>
+        <main>
+            <p class="eyebrow">404 · Page not found</p>
+
+            <h1>Nothing in this cave.</h1>
+
+            <p>
+                Whatever you were looking for isn't here.
+                Maybe it moved. Maybe it never existed.
+            </p>
+
+            <a href="/">Back to the campfire →</a>
+        </main>
+    </body>
+</html>
+
+<style>
+    :global(*) {
+        box-sizing: border-box;
+    }
+
+    :global(html) {
+        background: #0b2118;
+    }
+
+    :global(body) {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #0b2118;
+        color: #edf3ec;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.7;
+    }
+
+    main {
+        width: min(100% - 3rem, 680px);
+        padding-block: 4rem;
+    }
+
+    .eyebrow {
+        color: #8fb59a;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+    }
+
+    h1 {
+        margin: 0 0 1.5rem;
+        font-size: clamp(3rem, 9vw, 5.5rem);
+        font-weight: 600;
+        letter-spacing: -0.05em;
+        line-height: 1;
+    }
+
+    p {
+        max-width: 520px;
+        color: #c4d0c7;
+        font-size: 1.1rem;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 1.5rem;
+        color: #a9cbb2;
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+        color: #edf3ec;
+        text-decoration: underline;
+    }
+</style>
