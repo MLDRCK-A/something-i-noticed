@@ -5,6 +5,7 @@ interface Props {
     image?: string;
     imageAlt?: string;
     showSupport?: boolean;
+    articleTitle?: string;
 }
 
 const {
@@ -13,30 +14,48 @@ const {
     image = "/images/site/support-caveman.png",
     imageAlt = "A friendly caveman giving a thumbs-up",
     showSupport = false,
+    articleTitle,
 } = Astro.props;
+
+// Generate an email subject based on the article title.
+const emailSubject = articleTitle
+    ? `Thoughts on ${articleTitle}`
+    : "Something I Noticed";
+
+// Encode the subject so spaces and special characters work correctly.
+const contactHref = `mailto:somethinginoticed@duck.com?subject=${encodeURIComponent(emailSubject)}`;
 ---
 
 <section class="epilogue">
     <div class="epilogue-inner">
-        <img
-            src={image}
-            alt={imageAlt}
-            class="epilogue-art"
-        />
+        <!-- Quiet invitation to respond -->
+        <div class="contact-invitation">
+            <p>
+                <em>Noticed something or have a different perspective?</em>
+                <a href={contactHref}>
+                    Send it my way →
+                </a>
+            </p>
+        </div>
 
-        <h2>{message}</h2>
+        <!-- Customizable artwork and support message -->
+        <div class="epilogue-content">
+            <img src={image} alt={imageAlt} class="epilogue-art" />
 
-        {
-            showSupport && (
-                <div class="support-invitation">
-                    {supportText && <p>{supportText}</p>}
+            <h2>{message}</h2>
 
-                    <a href="/support/" class="support-link">
-                        Support the Cave →
-                    </a>
-                </div>
-            )
-        }
+            {
+                showSupport && (
+                    <div class="support-invitation">
+                        {supportText && <p>{supportText}</p>}
+
+                        <a href="/support/" class="support-link">
+                            Support the Cave →
+                        </a>
+                    </div>
+                )
+            }
+        </div>
     </div>
 </section>
 
@@ -49,8 +68,46 @@ const {
     .epilogue-inner {
         width: min(100% - 3rem, 720px);
         margin-inline: auto;
-        padding-block: clamp(4rem, 8vw, 7rem);
+        padding: 1rem 0 clamp(4rem, 8vw, 7rem);
         text-align: center;
+    }
+
+    /* Contact invitation */
+
+    .contact-invitation {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(169, 203, 178, 0.25);
+    }
+
+    .contact-invitation p {
+        margin: 0;
+        color: #a9cbb2;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .contact-invitation em {
+        font-style: italic;
+    }
+
+    .contact-invitation a {
+        display: inline-block;
+        margin-left: 0.25rem;
+        color: #edf3ec;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+
+    .contact-invitation a:hover,
+    .contact-invitation a:focus-visible {
+        color: #a9cbb2;
+    }
+
+    /* Customizable epilogue */
+
+    .epilogue-content {
+        padding-top: 1.5rem;
     }
 
     .epilogue-art {
@@ -67,6 +124,8 @@ const {
         font-weight: 400;
         line-height: 1.3;
     }
+
+    /* Optional support */
 
     .support-invitation {
         margin-top: 1.5rem;
@@ -97,6 +156,8 @@ const {
     .support-link:focus-visible {
         background: rgba(169, 203, 178, 0.12);
     }
+
+    /* Mobile */
 
     @media (max-width: 600px) {
         .epilogue-inner {

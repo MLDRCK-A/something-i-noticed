@@ -142,6 +142,7 @@ const socialImageURL = new URL(
 		</main>
 
 		<ArticleEpilogue
+			articleTitle={title}
 			message={epilogue?.message}
 			supportText={epilogue?.supportText}
 			image={epilogue?.image}
@@ -294,8 +295,6 @@ const socialImageURL = new URL(
 			font-family: Arial, Helvetica, sans-serif;
 			font-size: 0.85rem;
 		}
-=
-
 		.prose {
 			font-size: clamp(1.05rem, 1.5vw, 1.18rem);
 		}

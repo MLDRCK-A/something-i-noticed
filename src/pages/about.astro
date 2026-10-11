@@ -55,6 +55,14 @@ const socialImageAlt =
 				<h1>I notice things.</h1>
 			</header>
 
+			<!-- Caveman artwork introduces the page -->
+			<figure class="about-art">
+				<img
+					src="/images/site/about-caveman.png"
+					alt="A caveman sitting at a computer, looking at a photograph of a person and cat on the screen."
+				/>
+			</figure>
+
 			<section class="prose">
 				<p>
 					Something I Noticed is where I write about things I
@@ -68,13 +76,6 @@ const socialImageAlt =
 					with. I usually don't know where an observation will end
 					when I begin writing about it.
 				</p>
-
-				<figure class="about-art">
-					<img
-						src="/images/site/about-caveman.png"
-						alt="A caveman sitting at a computer, looking at a photograph of a person and cat on the screen."
-					/>
-				</figure>
 
 				<p>
 					The point isn't to hand you a philosophy or tell you what to
@@ -95,6 +96,22 @@ const socialImageAlt =
 				<p>
 					The observations, experiences, judgments, and final
 					editorial decisions remain my own.
+				</p>
+
+				<h2>Get in touch</h2>
+
+				<p>
+					Have a question, a different perspective, or something you
+					noticed yourself? Feel free to send it my way.
+				</p>
+
+				<p>
+					<a
+						class="contact-email"
+						href="mailto:somethinginoticed@duck.com?subject=Something%20I%20Noticed"
+					>
+						somethinginoticed@duck.com
+					</a>
 				</p>
 			</section>
 		</main>
@@ -144,8 +161,11 @@ const socialImageAlt =
 		color: #edf3ec;
 	}
 
+	/* Page heading */
+
 	header {
-		padding-block: clamp(4rem, 12vw, 8rem);
+		padding-top: 0rem;
+		padding-bottom: 0;
 	}
 
 	.eyebrow {
@@ -165,6 +185,21 @@ const socialImageAlt =
 		line-height: 0.95;
 	}
 
+	/* Caveman illustration */
+
+	.about-art {
+		margin: 0rem auto 3rem;
+		max-width: 560px;
+	}
+
+	.about-art img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	/* About text */
+
 	.prose {
 		max-width: 680px;
 		font-size: clamp(1.05rem, 2vw, 1.2rem);
@@ -175,17 +210,6 @@ const socialImageAlt =
 		color: #c4d0c7;
 	}
 
-	.about-art {
-		margin: 4rem auto;
-		max-width: 560px;
-	}
-
-	.about-art img {
-		display: block;
-		width: 100%;
-		height: auto;
-	}
-
 	h2 {
 		margin-block: 3.5rem 1.25rem;
 		color: #edf3ec;
@@ -194,11 +218,29 @@ const socialImageAlt =
 		letter-spacing: -0.03em;
 	}
 
+	/* Contact */
+
+	.contact-email {
+		color: #a9cbb2;
+		text-decoration: underline;
+		text-underline-offset: 4px;
+		overflow-wrap: anywhere;
+	}
+
+	.contact-email:hover,
+	.contact-email:focus-visible {
+		color: #edf3ec;
+	}
+
+	/* Footer */
+
 	footer {
 		margin-top: 6rem;
 		padding-block: 3rem;
 		border-top: 1px solid rgba(237, 243, 236, 0.14);
 	}
+
+	/* Mobile */
 
 	@media (max-width: 600px) {
 		nav,
@@ -208,11 +250,12 @@ const socialImageAlt =
 		}
 
 		header {
-			padding-block: 4rem;
+			padding-top: 0rem;
+			padding-bottom: 0;
 		}
 
 		.about-art {
-			margin-block: 3rem;
+			margin: 0 auto 2.5rem;
 		}
 	}
 </style>
