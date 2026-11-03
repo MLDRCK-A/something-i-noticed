@@ -146,6 +146,3 @@ vite.config.ts.timestamp-*
 .astro/
 dist/
 
-# Unpublished articles
-src/data/pieces/*.md
-!src/data/pieces/*.published.md
